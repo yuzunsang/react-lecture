@@ -1,30 +1,30 @@
-export default function UserInput() {
+export default function UserInput({ onChangeValue }) {
   function handleChange(event) {
-    console.log(event.target.value);
+    onChangeValue(event.target.value);
   }
 
   return (
-    <div id="user-input">
+    <section id="user-input">
       <form className="input-group">
         <div>
-          <label>Initial investment</label>
-          <input type="number" />
+          <label>Initial Investment</label>
+          <input type="number" required onChange={handleChange} />
         </div>
         <div>
-          <label>Annual investment</label>
-          <input type="number" />
+          <label>Annual Investment</label>
+          <input type="number" required />
         </div>
       </form>
       <form className="input-group">
         <div>
-          <label>Expected return</label>
-          <input type="number" />
+          <label>Expected Return</label>
+          <input type="number" required />
         </div>
         <div>
           <label>Duration</label>
-          <input type="number" />
+          <input type="number" required />
         </div>
       </form>
-    </div>
+    </section>
   );
 }
