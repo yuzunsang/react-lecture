@@ -1,29 +1,41 @@
-export default function UserInput({ onChangeValue }) {
-  function handleChange(event) {
-    onChangeValue(event.target.value);
-  }
-
+export default function UserInput({ onChangeInput }) {
   return (
     <section id="user-input">
       <form className="input-group">
-        <div>
-          <label>Initial Investment</label>
-          <input type="number" required onChange={handleChange} />
-        </div>
-        <div>
-          <label>Annual Investment</label>
-          <input type="number" required />
-        </div>
+        <p>
+          <label>initial investment</label>
+          <input
+            type="number"
+            required
+            onChange={(event) => onChangeInput(event, "initialInvestment")}
+          />
+        </p>
+        <p>
+          <label>annual investment</label>
+          <input
+            type="number"
+            required
+            onChange={(event) => onChangeInput(event, "annualInvestment")}
+          />
+        </p>
       </form>
       <form className="input-group">
-        <div>
-          <label>Expected Return</label>
-          <input type="number" required />
-        </div>
-        <div>
-          <label>Duration</label>
-          <input type="number" required />
-        </div>
+        <p>
+          <label>expected return</label>
+          <input
+            type="number"
+            required
+            onChange={(event) => onChangeInput(event, "expectedReturn")}
+          />
+        </p>
+        <p>
+          <label>duration</label>
+          <input
+            type="number"
+            required
+            onChange={(event) => onChangeInput(event, "duration")}
+          />
+        </p>
       </form>
     </section>
   );

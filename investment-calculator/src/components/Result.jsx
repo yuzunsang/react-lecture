@@ -3,20 +3,21 @@ export default function Result() {
     <table id="result">
       <thead>
         <tr>
-          <th>Year</th>
-          <th>Investment Value</th>
-          <th>Interest (Year)</th>
-          <th>Total Interest</th>
-          <th>Invested Capital</th>
+          <th scope="col">Year</th>
+          <th scope="col">Investment Value</th>
+          <th scope="col">Interest (Year)</th>
+          <th scope="col">Total Interest</th>
+          <th scope="col">Invested Capital</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>1000</td>
-          <td>1000</td>
-          <td>1100</td>
-          <td>1200</td>
+          <th scope="row">Donuts</th>
+          <td>3,000</td>
+        </tr>
+        <tr>
+          <th scope="row">Stationery</th>
+          <td>18,000</td>
         </tr>
       </tbody>
     </table>
