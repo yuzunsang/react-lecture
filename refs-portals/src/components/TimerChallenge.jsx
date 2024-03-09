@@ -15,7 +15,7 @@ export default function TimerChallenge({ children, targetTime }) {
     // 언제나 current 속성을 target으로 해야 함.
     timer.current = setTimeout(() => {
       setTimerExpired(true);
-      dialog.current.showModal();
+      dialog.current.open(); // 외부 컴포넌트, 즉 ResultModal.jsx의 open 메소드를 참조
     }, targetTime * 1000);
 
     setTimerStarted(true);
