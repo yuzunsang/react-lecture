@@ -21,7 +21,6 @@ function App() {
   }
 
   let content;
-
   if (projectsState.selectedProjectId === null) {
     content = <NewProject />;
   } else if (projectsState.selectedProjectId === undefined) {
