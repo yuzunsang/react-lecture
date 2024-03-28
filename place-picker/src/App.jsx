@@ -7,20 +7,16 @@ import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
 import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
 
+const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const storedPlaces = storedIds.map((id) =>
+  AVAILABLE_PLACES.find((place) => place.id === id)
+);
+
 function App() {
   const modal = useRef();
   const selectedPlace = useRef();
-  const [pickedPlaces, setPickedPlaces] = useState([]);
+  const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
   const [availablePlaces, setAvailablePlaces] = useState([]);
-
-  useEffect(() => {
-    const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
-    const storedPlaces = storedIds.map((id) =>
-      AVAILABLE_PLACES.find((place) => place.id === id)
-    );
-
-    setPickedPlaces(storedPlaces);
-  }, []);
 
   // 최초 실행 : 내부 컴포넌트가 모두 render 된 이후 실행됨.
   // 재실행 : dependency가 변화했을 경우에만 실행됨.
@@ -56,7 +52,7 @@ function App() {
 
     const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
 
-    if (!storedIds.indexOf(id)) {
+    if (storedIds.indexOf(id) === -1) {
       localStorage.setItem(
         "selectedPlaces",
         JSON.stringify([id, ...storedIds])
@@ -74,7 +70,7 @@ function App() {
 
     localStorage.setItem(
       "selectedPlaces",
-      JSON.stingify(storeIds.filter((id) => id !== selectedPlace.current))
+      JSON.stringify(storeIds.filter((id) => id !== selectedPlace.current))
     );
   }
 
