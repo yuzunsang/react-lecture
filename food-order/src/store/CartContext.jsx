@@ -2,8 +2,8 @@ import { createContext, useReducer } from "react";
 
 const CartContext = createContext({
   item: [],
-  addItem: (item) => {},
-  removeItem: (id) => {},
+  addItem(item) {},
+  removeItem(id) {},
 });
 
 // 업데이트된 상태를 반환
@@ -26,7 +26,7 @@ function cartReducer(state, action) {
 }
 
 export function CartContextProvider({ children }) {
-  useReducer(cartReducer, { items: [] });
+  const [state, dispatch] = useReducer(cartReducer, { items: [] });
 
   return <CartContext.Provider>{children}</CartContext.Provider>;
 }
