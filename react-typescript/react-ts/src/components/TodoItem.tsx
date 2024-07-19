@@ -1,8 +1,16 @@
-import Todo from "@/models/todo";
 import classes from "./TodoItem.module.css";
 
-const TodoItem = ({ text }: Omit<Todo, "id">) => {
-  return <li className={classes.item}>{text}</li>;
+type Props = {
+  text: string;
+  onDeleteTodo: () => void;
+};
+
+const TodoItem = ({ text, onDeleteTodo }: Props) => {
+  return (
+    <li className={classes.item} onClick={onDeleteTodo}>
+      {text}
+    </li>
+  );
 };
 
 export default TodoItem;
