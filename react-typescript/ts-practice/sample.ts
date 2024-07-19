@@ -66,14 +66,46 @@ type Option = {
   value: number;
 };
 
-// utility types
-
+// 유틸리티 타입
 // Partial<T> ===> Partial 붙이면 전부 다 optional 프로퍼티로 바뀜
+// Paritial의 반대 === Required 타입
 const user1: Partial<Option> = {
   name: "yoo",
 };
 
 type Type1<T> = {
   name: string;
-  value: number;
+  value: T;
 };
+
+const user2: Type1<number> = {
+  name: "lee",
+  value: 123,
+};
+
+// 제네릭 타입의 효용
+type GenericDynamicallyTyped<T> = {
+  label: string;
+  value: T;
+};
+
+type StringValueType = GenericDynamicallyTyped<string>;
+type NumberValueType = GenericDynamicallyTyped<number>;
+type BooleanValueType = GenericDynamicallyTyped<boolean>;
+type AnyArrayValueType = GenericDynamicallyTyped<any[]>;
+
+type PartialStringValueType = Partial<GenericDynamicallyTyped<string>>;
+
+type Object2 = {
+  name: string;
+  value: string;
+};
+
+const obj2: Readonly<Object2> = {
+  name: "lee",
+  value: "asdf",
+};
+// as const가 좀 더 간편
+
+// readonly 프로퍼티이므로, 수정 불가
+// obj2['name'] = "asdf";
